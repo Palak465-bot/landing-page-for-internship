@@ -3,408 +3,332 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Run Club | 30 Days to Stop Making Excuses</title>
+    <title>Run Club | Start Running in 30 Days</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Space Grotesk', sans-serif;
-            background-color: #09090b; /* zinc-950 */
-            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+            color: #334155; /* slate-700 */
             overflow-x: hidden;
         }
-        h1, h2, h3, .font-anton {
-            font-family: 'Anton', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .brutal-shadow {
-            box-shadow: 8px 8px 0px 0px #facc15;
-            transition: all 0.2s ease;
-        }
-        .brutal-shadow:hover {
-            transform: translate(4px, 4px);
-            box-shadow: 4px 4px 0px 0px #facc15;
-        }
-        .brutal-shadow-white {
-            box-shadow: 6px 6px 0px 0px #ffffff;
-        }
-        
-        /* Graphic Patterns */
-        .bg-grid {
-            background-size: 40px 40px;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-        }
-        .bg-dots {
-            background-image: radial-gradient(#facc15 2px, transparent 2px);
-            background-size: 20px 20px;
+
+        /* Soft, friendly UI shadows */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
         }
 
-        /* Animations */
-        .marquee-container {
-            overflow: hidden;
-            white-space: nowrap;
+        .soft-shadow {
+            box-shadow: 0 10px 30px -5px rgba(251, 146, 60, 0.3);
+            transition: all 0.3s ease;
         }
-        .marquee-content {
-            display: inline-block;
-            animation: marquee 15s linear infinite;
-        }
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .spin-slow {
-            animation: spin 12s linear infinite;
-        }
-        @keyframes spin {
-            100% { transform: rotate(360deg); }
-        }
-        .pulse-fast {
-            animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: .8; transform: scale(1.05); }
+        .soft-shadow:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px -5px rgba(251, 146, 60, 0.4);
         }
 
-        /* Accordion transition */
+        /* Abstract Background Blobs */
+        .blob {
+            position: absolute;
+            filter: blur(60px);
+            z-index: 0;
+            opacity: 0.6;
+            border-radius: 50%;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* FAQ Accordion */
         .faq-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
     </style>
 </head>
-<body class="antialiased selection:bg-yellow-400 selection:text-black">
+<body class="antialiased selection:bg-orange-200 selection:text-orange-900">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-zinc-950 border-b-4 border-yellow-400 px-6 py-4 flex justify-between items-center">
-        <div class="text-3xl font-anton text-white tracking-wider flex items-center gap-2">
-            <!-- Lightning Icon -->
-            <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
-            </svg>
-            RUN<span class="text-yellow-400">CLUB.</span>
+    <nav class="fixed w-full z-50 glass-card px-6 py-4 flex justify-between items-center border-b border-slate-200">
+        <div class="text-2xl font-extrabold text-slate-800 tracking-tight flex items-center gap-2">
+            <!-- Energetic Spark Icon -->
+            <div class="bg-gradient-to-br from-orange-400 to-rose-500 text-white p-1.5 rounded-lg">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+            </div>
+            Run<span class="text-orange-500">Club</span>
         </div>
-        <a href="#join" class="bg-yellow-400 text-black px-6 py-2 font-bold uppercase tracking-wide border-2 border-transparent hover:bg-transparent hover:text-yellow-400 hover:border-yellow-400 transition-colors">
-            Claim Your Spot
+        <a href="#join" class="bg-slate-900 text-white px-5 py-2.5 rounded-full font-semibold text-sm hover:bg-orange-500 transition-colors shadow-lg shadow-slate-900/20">
+            Join the Club
         </a>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="relative pt-32 pb-16 lg:pt-48 lg:pb-32 px-6 flex flex-col items-center text-center bg-grid overflow-hidden">
+    <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 flex flex-col items-center text-center overflow-hidden bg-white">
         
-        <!-- Decorative Rotating Starburst -->
-        <div class="absolute top-24 right-[-10%] md:right-10 w-48 h-48 md:w-64 md:h-64 opacity-20 md:opacity-100 z-0 pointer-events-none spin-slow">
-            <svg viewBox="0 0 100 100" class="w-full h-full text-yellow-400 fill-current">
-                <path d="M50 0 L56 35 L90 20 L65 48 L100 65 L65 70 L75 100 L50 75 L25 100 L35 70 L0 65 L35 48 L10 20 L44 35 Z" />
-            </svg>
-        </div>
-
-        <!-- Decorative Hazard Stripes -->
-        <div class="absolute bottom-10 left-[-5%] w-64 h-12 bg-yellow-400 transform -rotate-45 opacity-20 flex" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, #000 10px, #000 20px);"></div>
+        <!-- Colorful Background Blobs -->
+        <div class="blob bg-orange-300 w-96 h-96 top-0 left-[-10%] mix-blend-multiply"></div>
+        <div class="blob bg-rose-300 w-96 h-96 top-20 right-[-10%] mix-blend-multiply" style="animation-delay: -2s;"></div>
+        <div class="blob bg-teal-200 w-80 h-80 bottom-[-20%] left-[20%] mix-blend-multiply" style="animation-delay: -4s;"></div>
 
         <div class="max-w-4xl mx-auto relative z-10">
-            <div class="inline-block bg-red-600 text-white px-4 py-1 uppercase font-bold text-sm mb-8 tracking-widest border-2 border-white transform -rotate-2 shadow-[4px_4px_0_0_#fff]">
-                WARNING: NOT FOR PEOPLE WHO QUIT ON DAY 3
+            <div class="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-orange-100 text-orange-600 px-4 py-1.5 rounded-full font-semibold text-sm mb-8 shadow-sm">
+                <span class="relative flex h-2.5 w-2.5">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange-500"></span>
+                </span>
+                Registration open for the next 30 days
             </div>
             
-            <h1 class="text-6xl md:text-8xl lg:text-[10rem] mb-6 leading-[0.85] text-white">
-                YOUR RUNNING STRATEGY IS <span class="text-yellow-400 block mt-2">TRASH.</span>
+            <h1 class="text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold mb-6 text-slate-900 leading-tight tracking-tight">
+                Go from couch to <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-rose-500">
+                    confident in 30 days.
+                </span>
             </h1>
             
-            <p class="text-xl md:text-2xl text-zinc-400 mb-10 max-w-2xl mx-auto font-bold bg-zinc-950/80 p-4 border border-zinc-800 backdrop-blur-sm">
-                Stop ego-lifting your runs. Stop quitting when your shins hurt. Give us 30 days, follow the damn system, and you will become a runner. Period.
+            <p class="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto font-medium leading-relaxed">
+                No pressure, no judgment, and no previous experience required. Join a community of beginners and discover how good running can feel when you don't have to do it alone.
             </p>
             
-            <a href="#join" class="inline-block bg-yellow-400 text-black text-2xl font-anton px-12 py-5 uppercase brutal-shadow border-4 border-black group relative">
-                I'm Ready To Stop Quitting
-                <span class="block text-sm font-sans font-bold normal-case mt-1 text-zinc-800">Get the 30-Day System Now</span>
-            </a>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#join" class="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-rose-500 text-white text-lg font-bold px-8 py-4 rounded-full soft-shadow flex items-center justify-center gap-2 group">
+                    Start My 30-Day Journey
+                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
+            </div>
             
-            <div class="mt-12 flex items-center justify-center gap-4 text-sm font-bold text-zinc-500 uppercase tracking-wide">
+            <!-- Social Proof -->
+            <div class="mt-12 flex flex-col items-center justify-center gap-3">
                 <div class="flex -space-x-3">
-                    <!-- Fake user avatars using SVG -->
-                    <div class="w-8 h-8 rounded-full border-2 border-zinc-950 bg-red-500 flex items-center justify-center"><svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg></div>
-                    <div class="w-8 h-8 rounded-full border-2 border-zinc-950 bg-blue-500 flex items-center justify-center"><svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg></div>
-                    <div class="w-8 h-8 rounded-full border-2 border-zinc-950 bg-yellow-500 flex items-center justify-center"><svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg></div>
+                    <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://placehold.co/100x100/f87171/ffffff?text=SJ" alt="User">
+                    <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://placehold.co/100x100/fbbf24/ffffff?text=MR" alt="User">
+                    <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://placehold.co/100x100/34d399/ffffff?text=AL" alt="User">
+                    <img class="w-10 h-10 rounded-full border-2 border-white object-cover" src="https://placehold.co/100x100/60a5fa/ffffff?text=KT" alt="User">
+                    <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center text-xs font-bold text-slate-600">+10k</div>
                 </div>
-                <span>10,492+ Success Stories</span>
+                <p class="text-sm font-semibold text-slate-500">Join 10,492+ beginners who actually enjoy running now.</p>
             </div>
         </div>
     </header>
 
-    <!-- Scrolling Marquee (Marketing Scarcity/Hype) -->
-    <div class="bg-yellow-400 text-black py-3 border-y-4 border-black marquee-container flex">
-        <div class="marquee-content text-2xl font-anton uppercase tracking-widest flex items-center gap-4">
-            NO FLUFF • NO B.S. • JUST RESULTS • ZERO TO 5K IN 30 DAYS • STOP MAKING EXCUSES • DO THE WORK • NO FLUFF • NO B.S. • JUST RESULTS • ZERO TO 5K IN 30 DAYS • STOP MAKING EXCUSES • DO THE WORK •
-        </div>
-    </div>
-
-    <!-- The Blunt Truth (Pain Points) -->
-    <section class="py-24 px-6 bg-zinc-900 border-b-4 border-zinc-800 relative overflow-hidden">
-        <!-- Background Graphic -->
-        <div class="absolute inset-0 bg-dots opacity-10 pointer-events-none"></div>
-
+    <section class="py-24 px-6 bg-slate-50 relative border-t border-slate-200">
         <div class="max-w-6xl mx-auto text-center relative z-10">
-            <h2 class="text-5xl md:text-8xl mb-4">WHY YOU KEEP <span class="text-red-500 relative inline-block">
-                FAILING
-                <!-- Scratch mark SVG over 'FAILING' -->
-                <svg class="absolute inset-0 w-full h-full text-white opacity-80" preserveAspectRatio="none" viewBox="0 0 100 100">
-                    <line x1="10" y1="90" x2="90" y2="10" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-                </svg>
-            </span></h2>
-            <p class="text-xl text-zinc-400 mb-20 font-bold uppercase tracking-wide bg-zinc-950 inline-block px-6 py-2 border-2 border-zinc-800">Let's stop lying to ourselves, shall we?</p>
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-slate-900">The struggle is real.</h2>
+            <p class="text-xl text-orange-500 font-semibold mb-16">(And you are definitely not alone)</p>
             
-            <div class="grid md:grid-cols-3 gap-10 text-left">
-                <!-- Truth 1 -->
-                <div class="bg-zinc-950 p-8 pt-12 border-4 border-zinc-800 relative hover:border-yellow-400 transition-colors group">
-                    <div class="absolute -top-8 left-6 bg-zinc-900 text-yellow-400 w-16 h-16 flex items-center justify-center border-4 border-zinc-800 group-hover:border-yellow-400 transition-colors">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            <div class="grid md:grid-cols-3 gap-8 text-left">
+                <!-- Card 1 -->
+                <div class="bg-white p-8 rounded-3xl shadow-xl shadow-slate-200/50 hover:-translate-y-1 transition-transform duration-300 border border-slate-100">
+                    <div class="w-14 h-14 bg-rose-100 text-rose-500 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-3xl text-white mb-4 mt-2">YOU GO TOO HARD.</h3>
-                    <p class="text-zinc-400 font-bold leading-relaxed">You try to sprint a mile on Day 1, taste blood in your lungs, and quit for 6 months. That's not training, that's just stupid.</p>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-3">"Running is too hard."</h3>
+                    <p class="text-slate-600 leading-relaxed">It is when you try to sprint on day one. We remove the pressure and focus on gentle, manageable intervals that feel good.</p>
                 </div>
-                <!-- Truth 2 -->
-                <div class="bg-zinc-950 p-8 pt-12 border-4 border-zinc-800 relative hover:border-yellow-400 transition-colors group">
-                    <div class="absolute -top-8 left-6 bg-zinc-900 text-yellow-400 w-16 h-16 flex items-center justify-center border-4 border-zinc-800 group-hover:border-yellow-400 transition-colors">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-8 rounded-3xl shadow-xl shadow-slate-200/50 hover:-translate-y-1 transition-transform duration-300 border border-slate-100">
+                    <div class="w-14 h-14 bg-orange-100 text-orange-500 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-3xl text-white mb-4 mt-2">NO SYSTEM.</h3>
-                    <p class="text-zinc-400 font-bold leading-relaxed">You just "wing it". Without a structured progression of walk/run intervals, your body breaks down before it adapts.</p>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-3">"I run out of breath."</h3>
+                    <p class="text-slate-600 leading-relaxed">Most beginners run way too fast. We'll teach you the "conversational pace" that lets you build stamina without gasping for air.</p>
                 </div>
-                <!-- Truth 3 -->
-                <div class="bg-zinc-950 p-8 pt-12 border-4 border-zinc-800 relative hover:border-yellow-400 transition-colors group">
-                    <div class="absolute -top-8 left-6 bg-zinc-900 text-yellow-400 w-16 h-16 flex items-center justify-center border-4 border-zinc-800 group-hover:border-yellow-400 transition-colors">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-8 rounded-3xl shadow-xl shadow-slate-200/50 hover:-translate-y-1 transition-transform duration-300 border border-slate-100">
+                    <div class="w-14 h-14 bg-teal-100 text-teal-600 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-3xl text-white mb-4 mt-2">YOU ARE SOFT.</h3>
-                    <p class="text-zinc-400 font-bold leading-relaxed">The second your brain says "this is uncomfortable," you stop. We fix the physical strategy so you can build the mental toughness.</p>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-3">"I'm intimidated."</h3>
+                    <p class="text-slate-600 leading-relaxed">This isn't an elite track club. It's a supportive community of normal people cheering each other on every step of the way.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- The Blueprint (The Solution) -->
-    <section class="py-24 px-6 bg-black">
-        <div class="max-w-5xl mx-auto">
-            <h2 class="text-5xl md:text-8xl mb-16 text-center text-yellow-400">THE 30-DAY BLUEPRINT</h2>
-            
-            <div class="grid md:grid-cols-2 gap-8 relative">
-                
-                <!-- Central dashed line graphic for desktop -->
-                <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNCIgaGVpZ2h0PSIzMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSIxNSIgZmlsbD0iI2ZhY2MxNSIvPjwvc3ZnPg==')] -ml-0.5"></div>
-
-                <!-- Phase 1 -->
-                <div class="bg-zinc-900 border-2 border-zinc-700 p-8 flex flex-col items-start relative hover:border-yellow-400 transition-colors md:mr-8 md:text-right md:items-end">
-                    <div class="absolute -top-6 md:-right-6 md:left-auto left-6 bg-zinc-800 text-yellow-400 font-anton text-4xl px-4 py-2 border-2 border-zinc-600">WK1</div>
-                    <h3 class="text-4xl text-white mb-4 mt-4">SWALLOW YOUR PRIDE</h3>
-                    <p class="text-zinc-400 font-bold text-lg">Mostly walking. Tiny 60-second jogs. You will feel like you aren't doing enough. Good. That's the point. We are building tendons, not ego.</p>
-                </div>
-
-                <!-- Spacer for grid layout -->
-                <div class="hidden md:block"></div>
-                <div class="hidden md:block"></div>
-
-                <!-- Phase 2 -->
-                <div class="bg-zinc-900 border-2 border-zinc-700 p-8 flex flex-col items-start relative hover:border-yellow-400 transition-colors md:ml-8">
-                    <div class="absolute -top-6 md:-left-6 left-6 bg-zinc-800 text-yellow-400 font-anton text-4xl px-4 py-2 border-2 border-zinc-600">WK2</div>
-                    <h3 class="text-4xl text-white mb-4 mt-4">EMBRACE THE SUCK</h3>
-                    <p class="text-zinc-400 font-bold text-lg">50/50 Walk and Jog splits. Your heart rate will adapt. You will stop gasping for air like a fish out of water.</p>
-                </div>
-
-                <!-- Phase 3 -->
-                <div class="bg-zinc-900 border-2 border-zinc-700 p-8 flex flex-col items-start relative hover:border-yellow-400 transition-colors md:mr-8 md:text-right md:items-end">
-                    <div class="absolute -top-6 md:-right-6 md:left-auto left-6 bg-zinc-800 text-yellow-400 font-anton text-4xl px-4 py-2 border-2 border-zinc-600">WK3</div>
-                    <h3 class="text-4xl text-white mb-4 mt-4">THE TIPPING POINT</h3>
-                    <p class="text-zinc-400 font-bold text-lg">More running, less walking. The magic happens here. Your body realizes it's actually capable of doing hard things.</p>
-                </div>
-
-                <!-- Spacer for grid layout -->
-                <div class="hidden md:block"></div>
-                <div class="hidden md:block"></div>
-
-                <!-- Phase 4 -->
-                <div class="bg-yellow-400 border-4 border-black p-8 flex flex-col items-start relative brutal-shadow-white md:ml-8 z-10">
-                    <div class="absolute right-4 top-4 bg-black text-white font-bold uppercase px-3 py-1 text-xs pulse-fast">The Goal</div>
-                    <div class="absolute -top-6 md:-left-6 left-6 bg-black text-white font-anton text-4xl px-4 py-2 border-2 border-yellow-400">WK4</div>
-                    <h3 class="text-4xl text-black mb-4 mt-4">YOU ARE A RUNNER.</h3>
-                    <p class="text-zinc-800 font-bold text-lg">20-30 minutes of continuous running. No stopping. No walking. You execute the plan, you get the result.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Direct CTA & Scarcity -->
-    <section id="join" class="py-32 px-6 bg-yellow-400 text-black border-y-8 border-black relative">
-        
-        <!-- Background bold text graphic -->
-        <div class="absolute inset-0 overflow-hidden flex items-center justify-center opacity-10 pointer-events-none">
-            <h2 class="text-[20rem] font-anton leading-none whitespace-nowrap">DO THE WORK</h2>
-        </div>
-
-        <div class="max-w-4xl mx-auto text-center border-8 border-black p-8 md:p-16 bg-white brutal-shadow relative z-10">
-            
-            <!-- Hand-drawn SVG Arrow pointing at headline -->
-            <svg class="hidden md:block absolute -top-16 -left-16 w-32 h-32 text-black transform -rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path>
-            </svg>
-
-            <h2 class="text-6xl md:text-8xl mb-4">DO IT. OR DON'T.</h2>
-            <p class="text-2xl font-bold mb-10 bg-black text-white inline-block px-4 py-1 transform rotate-1">But stop saying you "wish you could run."</p>
-            
-            <!-- Fake Countdown Timer for Marketing Urgency -->
-            <div class="mb-10 flex justify-center gap-6 text-center font-anton text-5xl md:text-7xl">
-                <div class="flex flex-col bg-zinc-100 p-4 border-4 border-black">
-                    <span id="hours">11</span>
-                    <span class="text-base font-sans font-bold uppercase tracking-widest mt-2">Hours</span>
-                </div>
-                <span class="pt-4">:</span>
-                <div class="flex flex-col bg-zinc-100 p-4 border-4 border-black">
-                    <span id="mins">45</span>
-                    <span class="text-base font-sans font-bold uppercase tracking-widest mt-2">Mins</span>
-                </div>
-                <span class="pt-4">:</span>
-                <div class="flex flex-col bg-zinc-100 p-4 border-4 border-black text-red-600">
-                    <span id="secs">22</span>
-                    <span class="text-base font-sans font-bold uppercase tracking-widest mt-2 text-black">Secs</span>
-                </div>
-            </div>
-            
-            <p class="text-2xl font-bold mb-8 border-b-4 border-red-500 inline-block pb-2">
-                Valued at <span class="line-through text-zinc-500">$150</span>. Yours today for <span class="text-red-600 font-black">$0</span>.
-            </p>
-            <br>
-            
-            <button class="w-full sm:w-auto bg-black text-white text-3xl md:text-4xl font-anton px-12 py-8 uppercase hover:bg-zinc-800 transition-colors border-4 border-black hover:scale-[1.02] active:scale-[0.98] duration-100 relative group">
-                GIVE ME THE 30-DAY SYSTEM
-                <!-- Button hover graphic -->
-                <svg class="absolute right-4 top-1/2 -translate-y-1/2 w-8 h-8 opacity-0 group-hover:opacity-100 transition-opacity transform group-hover:translate-x-2 duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                </svg>
-            </button>
-            <p class="mt-6 text-sm font-bold text-zinc-500 uppercase tracking-widest flex items-center justify-center gap-2">
-                <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                Instant Access. No Credit Card Required.
-            </p>
-        </div>
-    </section>
-
-    <!-- Objection Handling (Blunt FAQ) -->
-    <section class="py-24 px-6 bg-zinc-950">
+    <section class="py-24 px-6 bg-white overflow-hidden relative">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-6xl mb-12 text-center text-white font-anton flex items-center justify-center gap-4">
-                <svg class="w-12 h-12 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                DESTROY YOUR EXCUSES
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-slate-900">How the 30 days break down</h2>
+                <p class="text-lg text-slate-600">A structured, gentle progression to build your confidence.</p>
+            </div>
+            
+            <div class="relative border-l-4 border-orange-100 ml-4 md:ml-8 space-y-12 pb-8">
+                
+                <!-- Week 1 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-[14px] top-1 w-6 h-6 bg-orange-500 rounded-full border-4 border-white shadow-sm"></div>
+                    <span class="text-sm font-bold text-orange-500 uppercase tracking-wider bg-orange-50 px-3 py-1 rounded-full mb-3 inline-block">Week 1</span>
+                    <h3 class="text-3xl font-bold text-slate-800 mb-2">Getting Moving</h3>
+                    <p class="text-slate-600 text-lg mb-2">Mostly walking, with tiny 60-second jogs sprinkled in. The goal is simply to build the habit of getting out the door.</p>
+                    <div class="flex items-center gap-2 text-sm font-medium text-slate-500 bg-slate-50 inline-flex px-3 py-1.5 rounded-lg border border-slate-100">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        15 mins / 3x a week
+                    </div>
+                </div>
+
+                <!-- Week 2 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-[14px] top-1 w-6 h-6 bg-orange-400 rounded-full border-4 border-white shadow-sm"></div>
+                    <span class="text-sm font-bold text-orange-500 uppercase tracking-wider bg-orange-50 px-3 py-1 rounded-full mb-3 inline-block">Week 2</span>
+                    <h3 class="text-3xl font-bold text-slate-800 mb-2">Finding Your Rhythm</h3>
+                    <p class="text-slate-600 text-lg mb-2">We shift to 50/50 walk and jog splits. Your body starts adapting, and you'll notice your breathing getting easier.</p>
+                    <div class="flex items-center gap-2 text-sm font-medium text-slate-500 bg-slate-50 inline-flex px-3 py-1.5 rounded-lg border border-slate-100">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        20 mins / 3x a week
+                    </div>
+                </div>
+
+                <!-- Week 3 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-[14px] top-1 w-6 h-6 bg-rose-400 rounded-full border-4 border-white shadow-sm"></div>
+                    <span class="text-sm font-bold text-rose-500 uppercase tracking-wider bg-rose-50 px-3 py-1 rounded-full mb-3 inline-block">Week 3</span>
+                    <h3 class="text-3xl font-bold text-slate-800 mb-2">Pushing the Pace</h3>
+                    <p class="text-slate-600 text-lg mb-2">Longer jogs, shorter walks. This is the magic week where you realize you are actually capable of doing this.</p>
+                    <div class="flex items-center gap-2 text-sm font-medium text-slate-500 bg-slate-50 inline-flex px-3 py-1.5 rounded-lg border border-slate-100">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        25 mins / 3x a week
+                    </div>
+                </div>
+
+                <!-- Week 4 -->
+                <div class="relative pl-8 md:pl-12">
+                    <div class="absolute -left-[18px] top-0 w-8 h-8 bg-rose-500 rounded-full border-4 border-white shadow-md flex items-center justify-center">
+                        <div class="w-2 h-2 bg-white rounded-full"></div>
+                    </div>
+                    <span class="text-sm font-bold text-rose-600 uppercase tracking-wider bg-rose-100 px-3 py-1 rounded-full mb-3 inline-block">Week 4</span>
+                    <h3 class="text-3xl font-bold text-slate-800 mb-2">The Continuous Run</h3>
+                    <p class="text-slate-600 text-lg mb-2">You will surprise yourself. By the end of this week, you'll complete a continuous run without stopping to walk.</p>
+                    <div class="flex items-center gap-2 text-sm font-medium text-slate-500 bg-slate-50 inline-flex px-3 py-1.5 rounded-lg border border-slate-100">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        30 mins / 3x a week
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-slate-50 border-y border-slate-200">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-4xl font-extrabold mb-12 text-center text-slate-900">
+                Removing your doubts
             </h2>
             
-            <div class="space-y-6">
-                <div class="bg-zinc-900 border-4 border-zinc-800 hover:border-yellow-400 transition-colors">
-                    <button class="faq-btn w-full px-6 py-6 text-left flex justify-between items-center font-bold text-xl md:text-2xl uppercase tracking-wide">
-                        "I'm too out of shape to start."
-                        <span class="text-yellow-400 font-anton text-4xl transition-transform duration-200 bg-zinc-950 w-12 h-12 flex items-center justify-center border-2 border-zinc-700">+</span>
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                    <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center font-bold text-lg text-slate-800 hover:bg-slate-50 transition-colors">
+                        What if I have literally never run before?
+                        <span class="text-orange-500 text-2xl transition-transform duration-300">+</span>
                     </button>
-                    <div class="faq-content bg-zinc-950 px-6 border-t-4 border-transparent">
-                        <p class="py-6 text-zinc-400 font-bold text-lg leading-relaxed border-l-4 border-yellow-400 pl-4">That is literally the entire point of this program. We start with walking. If you can walk for 15 minutes, you can do this program. Next excuse.</p>
+                    <div class="faq-content bg-white px-6">
+                        <p class="py-4 text-slate-600 leading-relaxed border-t border-slate-100">
+                            Perfect. This program is designed exactly for you. We assume zero baseline fitness. We start primarily with walking and slowly, gently ease into running over 30 days.
+                        </p>
                     </div>
                 </div>
 
-                <div class="bg-zinc-900 border-4 border-zinc-800 hover:border-yellow-400 transition-colors">
-                    <button class="faq-btn w-full px-6 py-6 text-left flex justify-between items-center font-bold text-xl md:text-2xl uppercase tracking-wide">
-                        "I don't have the right shoes."
-                        <span class="text-yellow-400 font-anton text-4xl transition-transform duration-200 bg-zinc-950 w-12 h-12 flex items-center justify-center border-2 border-zinc-700">+</span>
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                    <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center font-bold text-lg text-slate-800 hover:bg-slate-50 transition-colors">
+                        Do I need expensive gear or shoes?
+                        <span class="text-orange-500 text-2xl transition-transform duration-300">+</span>
                     </button>
-                    <div class="faq-content bg-zinc-950 px-6 border-t-4 border-transparent">
-                        <p class="py-6 text-zinc-400 font-bold text-lg leading-relaxed border-l-4 border-yellow-400 pl-4">Nobody cares what's on your feet right now. Grab whatever sneakers you own and go outside. You can buy the $150 carbon-plated shoes when you actually prove to yourself you can stick to a habit.</p>
+                    <div class="faq-content bg-white px-6">
+                        <p class="py-4 text-slate-600 leading-relaxed border-t border-slate-100">
+                            Not at all! A comfortable pair of sneakers that you already own and a positive attitude are all you need to start. Once you fall in love with running, you can treat yourself to new shoes!
+                        </p>
                     </div>
                 </div>
 
-                <div class="bg-zinc-900 border-4 border-zinc-800 hover:border-yellow-400 transition-colors">
-                    <button class="faq-btn w-full px-6 py-6 text-left flex justify-between items-center font-bold text-xl md:text-2xl uppercase tracking-wide">
-                        "What if it's raining or cold?"
-                        <span class="text-yellow-400 font-anton text-4xl transition-transform duration-200 bg-zinc-950 w-12 h-12 flex items-center justify-center border-2 border-zinc-700">+</span>
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                    <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center font-bold text-lg text-slate-800 hover:bg-slate-50 transition-colors">
+                        What if I miss a day or fall behind?
+                        <span class="text-orange-500 text-2xl transition-transform duration-300">+</span>
                     </button>
-                    <div class="faq-content bg-zinc-950 px-6 border-t-4 border-transparent">
-                        <p class="py-6 text-zinc-400 font-bold text-lg leading-relaxed border-l-4 border-yellow-400 pl-4">Skin is waterproof. Put on a jacket and get it done. The days you don't want to do it are the days you need to do it the most.</p>
+                    <div class="faq-content bg-white px-6">
+                        <p class="py-4 text-slate-600 leading-relaxed border-t border-slate-100">
+                            Life happens! You have lifetime access to the schedule. If you miss a day, just pick up where you left off. You can repeat weeks as many times as you need. You move at your own perfect pace.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-16 bg-black text-center border-t-8 border-zinc-900 bg-grid">
-        <h2 class="text-5xl font-anton text-white opacity-20 mb-6 flex items-center justify-center gap-2">
-            <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>
-            RUNCLUB.
-        </h2>
-        <p class="text-zinc-600 font-bold text-sm uppercase tracking-widest">© 2026 RunClub. Execute the plan.</p>
+    <section id="join" class="py-32 px-6 relative overflow-hidden bg-slate-900 text-center">
+        <!-- Background Accents -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+            <div class="absolute top-[-10%] right-[-5%] w-96 h-96 bg-gradient-to-br from-orange-500 to-rose-600 rounded-full blur-[100px] opacity-40"></div>
+            <div class="absolute bottom-[-10%] left-[-5%] w-80 h-80 bg-gradient-to-tr from-teal-400 to-blue-500 rounded-full blur-[100px] opacity-30"></div>
+        </div>
+
+        <div class="max-w-3xl mx-auto relative z-10 glass-card p-10 md:p-16 rounded-[3rem] border border-slate-700/50 bg-slate-800/50">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-6 text-white">Ready to take the first step?</h2>
+            <p class="text-xl text-slate-300 mb-10">
+                In 30 days, you are going to look back and be incredibly proud that you started today. Join Run Club and let's hit the pavement together.
+            </p>
+            
+            <button class="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-rose-500 text-white text-xl font-bold px-10 py-5 rounded-full hover:scale-105 active:scale-95 transition-all shadow-lg shadow-orange-500/30 flex items-center justify-center gap-3 mx-auto">
+                Join Run Club Today
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </button>
+            
+            <div class="mt-6 flex items-center justify-center gap-2 text-sm text-slate-400 font-medium">
+                <svg class="w-5 h-5 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                Instant Access • Cancel Anytime
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-8 bg-slate-950 text-center text-slate-500 text-sm font-medium">
+        <p>© 2026 Run Club. Made for absolute beginners.</p>
     </footer>
 
-    <!-- Interactive Scripts -->
     <script>
-        // FAQ Accordion Logic
+        // Smooth FAQ Accordion Logic
         const faqBtns = document.querySelectorAll('.faq-btn');
         
         faqBtns.forEach(btn => {
             btn.addEventListener('click', function() {
                 const content = this.nextElementSibling;
                 const icon = this.querySelector('span');
-                const parent = this.parentElement;
                 
                 // Close all others
                 document.querySelectorAll('.faq-content').forEach(el => {
                     if(el !== content) {
                         el.style.maxHeight = null;
-                        el.previousElementSibling.querySelector('span').textContent = '+';
                         el.previousElementSibling.querySelector('span').style.transform = 'rotate(0deg)';
-                        el.parentElement.classList.remove('border-yellow-400');
                     }
                 });
 
                 // Toggle current
                 if (content.style.maxHeight) {
                     content.style.maxHeight = null;
-                    icon.textContent = '+';
                     icon.style.transform = 'rotate(0deg)';
-                    parent.classList.remove('border-yellow-400');
                 } else {
                     content.style.maxHeight = content.scrollHeight + "px";
-                    icon.textContent = '−';
-                    icon.style.transform = 'rotate(180deg)';
-                    parent.classList.add('border-yellow-400');
+                    icon.style.transform = 'rotate(45deg)'; // Turns + into x
                 }
             });
         });
-
-        // Fake Countdown Timer Logic (Marketing Scarcity)
-        let hours = 11;
-        let mins = 45;
-        let secs = 22;
-
-        setInterval(() => {
-            secs--;
-            if (secs < 0) {
-                secs = 59;
-                mins--;
-                if (mins < 0) {
-                    mins = 59;
-                    hours--;
-                    if (hours < 0) hours = 23;
-                }
-            }
-            
-            document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
-            document.getElementById('mins').innerText = mins.toString().padStart(2, '0');
-            document.getElementById('secs').innerText = secs.toString().padStart(2, '0');
-        }, 1000);
     </script>
 </body>
 </html>
